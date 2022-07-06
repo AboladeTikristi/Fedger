@@ -1,0 +1,10 @@
+const express=require("express")
+const router=express.Router()
+const userController=require('../controllers/user.controller')
+// const messageController=require('../controllers/message.controller')
+router.get('/',userController.landingPages)
+router.post('/signup',userController.signUp)
+router.post('/login',userController.logIn)
+router.get('/presentUser',userController.allInfo)
+router.get('/allUsers',userController.getAllUser)
+module.exports=router
