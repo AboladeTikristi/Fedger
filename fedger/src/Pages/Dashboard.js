@@ -1,4 +1,8 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
+import {useSelector,useDispatch} from 'react-redux'
+import {allUsers,presentUser} from '../actions/index'
 import img1 from '../Images/img10.jpg';
 import img7 from '../Images/img7.jpg';
 import img2 from '../Images/img1.jpg';
@@ -8,6 +12,42 @@ import img3 from '../Images/img13.jpg';
 import Navbar from "./Navbar"
 import {Routes,Route,Redirect,Link} from 'react-router-dom'
 function Dashboard() {
+  const url='http://localhost:5002/presentUser'
+    const url2='http://localhost:5002/allUsers'
+    const navigate=useNavigate()
+    const token=localStorage.token
+    let dispatch = useDispatch()
+    let reduxState=useSelector(state=>state)
+    let reduxUser=useSelector(state=>state.users.presentUser)
+    const [userDetails, setuserDetails] = useState('')
+//    console.log(reduxCount)
+    const [count, setcount] = useState("")
+    useEffect(() => {
+        axios.get(url,
+            {
+            headers:{
+            'Authorization':`Bearer ${token}`,
+            'Content-Type':'application/json',
+            'Accept':'application/json'
+            }
+        }).then((res)=>{
+            if (res.data.status) {
+                dispatch(presentUser(res.data.userDetails))
+                setuserDetails(reduxUser)
+                axios.get(url2).then((result)=>{
+                  if (result.data.status) {
+                    dispatch(allUsers(result.data.allUsers))
+                  }
+                })
+            }
+            else{
+                localStorage.removeItem('token')
+                navigate('/signin')
+            }
+            
+        })
+    }, [reduxUser])
+    
   return (
     <> 
       
@@ -17,7 +57,7 @@ function Dashboard() {
          style={{backgroundImage:`url(${img1})`,backgroundRepeat: 'no-repeat',backgroundSize:"cover",color:"white",height:"400px"}} 
          className="row">
            {/* header */}
-            <Navbar className=''></Navbar>  
+            <Navbar home={'red'} className=''></Navbar>  
           <div className="">
             
             {/* Main body */}

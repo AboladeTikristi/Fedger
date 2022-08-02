@@ -5,11 +5,10 @@ import "../Components/css/styles.css"
 // import "../Components/css/main.js"
 import { Navbar,Container,Offcanvas,Nav,Dropdown,Form,FormControl,OverlayTrigger,Tooltip,Button,Image } from "react-bootstrap";
 import {Routes,Route,Navigate,useNavigate,Link,useParams} from 'react-router-dom'
-function Naver() {
-
+function Naver({color,cart, home,event,rest,chef,contact}) {
   return (
     <>
-      <header id="header" style={{height:"60px"}} class="fixed-top  top-md-0 align-items-center ">
+      <header id="header" style={{height:"60px"}} className="fixed-top  top-md-0 align-items-center ">
         <Navbar className='' expand="lg" > 
        
         <Navbar.Brand style={{fontFamily:"Lucida Bright!important",color:"pink"}} className="text-center mt-3" >
@@ -29,26 +28,26 @@ function Naver() {
           </Offcanvas.Header>
           <Offcanvas.Body>
            
-          <Nav className="mx-auto flex-grow-5">
+          <Nav className="mx-auto flex-grow-4">
           <Nav.Link className='ms-2'>
-            <Link to="/home"><span>Home</span></Link> 
+            <Link to="/dashboard"><span style={{color:home}}>Home</span></Link> 
           </Nav.Link>
           <Nav.Link className='ms-2'>
-            <Link to="/home"><span>Specials</span></Link> 
+            <Link to="/specials"><span style={{color:color}}>Specials</span></Link> 
           </Nav.Link>
           <Nav.Link className='ms-2'>
-            <Link to="/home"><span>Events</span></Link> 
+            <Link to="/events"><span style={{color:event}}>Events</span></Link> 
           </Nav.Link>
           <Nav.Link className='ms-2'>
-            <Link to="/home"><span>Restaurants</span></Link> 
+            <Link to="/restaurants"><span style={{color:rest}}>Restaurants</span></Link> 
           </Nav.Link>
           <Nav.Link className='ms-2'>
-            <Link to="/home"><span>Chefs</span></Link> 
+            <Link to="/chefs"><span  style={{color:chef}}>Chefs</span></Link> 
           </Nav.Link>
           <Dropdown className='dropdown '>
                     <Dropdown.Toggle bsPrefix="p-0" style={{}} variant="link"  className='shadow-none text-decoration-none text-dark nav-link scrollto mt-2' id="dropdown-basic"
                      >
-                        <Link to=""><span>Categories <span className='fa-solid fa-caret-down'></span></span></Link> 
+                        <Link to=""><span>Menu Categories <span className='fa-solid fa-caret-down'></span></span></Link> 
                       
                       {/* About */}
                       </Dropdown.Toggle>
@@ -56,48 +55,61 @@ function Naver() {
                       <Dropdown.Menu className="border-0 see" style={{backgroundColor:"rgba(238, 234, 226, 0.6)"}}> 
                        
                         <Dropdown.Item >
-                          Continental 
+                          <Link to='/menu/continental'>Continental </Link>
                         </Dropdown.Item>
                         
                         <Dropdown.Item>
-                         Traditional
+                        <Link to='/menu/traditional'>Traditional</Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                         Drinks
+                        <Link to='/menu/deserts'>Deserts </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          Snacks
+                        <Link to='/menu/drinks'>Drinks </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          Deserts
+                        <Link to='/menu/snacks'>Snacks </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          Others...
+                        <Link to='/menu/others'>Others </Link>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
 
                     <Nav.Link className='ms-2'>
-                      <Link to="/home"><span>Contact</span></Link> 
+                      <Link to="/contact"><span style={{color:contact}}>Contact</span></Link> 
                     </Nav.Link>
         
       </Nav>
+      <Nav.Link className='ms-2'>
+            <Link to="/cart"><span style={{color:cart}}><i class="fa-solid fa-cart-shopping"></i></span></Link> 
+      </Nav.Link>
       <Dropdown className='dropdown me-5'>
                     <Dropdown.Toggle bsPrefix="p-0" style={{}} variant="link"  className='shadow-none text-decoration-none text-dark nav-link scrollto mt-2' id="dropdown-basic"
                      >
-                        <Link to="" className=" "><span>You<span className='fa-solid fa-caret-down'></span></span></Link> 
+                        <Link to=""><span>You<span className='fa-solid fa-caret-down'></span></span></Link>
                       
                       {/* About */}
                       </Dropdown.Toggle>
 
-                      <Dropdown.Menu  className="border-0 see" style={{backgroundColor:"rgba(238, 234, 226, 0.6)",width:"50px!important"}}> 
+                      <Dropdown.Menu  className="border-0 see" style={{backgroundColor:"rgba(238, 234, 226, 0.6)",width:"40px!important"}}> 
                        
-                        <Dropdown.Item >
-                           Profile 
+                        <Dropdown.Item>
+                         <Link  to='/profile'>
+                          Profile
+                          </Link>
                         </Dropdown.Item>
                         
-                        <Dropdown.Item href="#/action-2">Settings</Dropdown.Item>
-                        <Dropdown.Item>logOut</Dropdown.Item>
+                        <Dropdown.Item>
+                         <Link to='/settings'>
+                          <i class="fa-solid fa-gear"></i> Settings 
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link to='/'>
+                          logOut
+                          </Link>
+                          </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
         

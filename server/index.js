@@ -5,7 +5,10 @@ app.use(bodyParser.urlencoded({extended:true,limit:"50mb"}))
 app.use(bodyParser.json({limit:"50mb"}))
 const cors=require('cors')
 const mongoose=require("mongoose")
-const URI="mongodb+srv://AboladeTikristi:tikristi@cluster0.8i7iv.mongodb.net/Ecommerce?retryWrites=true&w=majority"
+app.use(cors())
+require('dotenv').config()
+// const URI="mongodb+srv://AboladeTikristi:tikristi@cluster0.8i7iv.mongodb.net/Ecommerce?retryWrites=true&w=majority"
+const URI=process.env.MONGO_URI;
 mongoose.connect(URI,(err)=>{
       if (err) {
         console.log("mongoose not connected yet")
@@ -13,8 +16,7 @@ mongoose.connect(URI,(err)=>{
       }
       else{console.log('mongoose connected successfully')}
 })
-app.use(cors())
-require('dotenv').config()
+
 const PORT=process.env.PORT||5003
 
 const userRouter=require("./routes/user.route")

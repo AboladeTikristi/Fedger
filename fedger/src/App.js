@@ -14,6 +14,20 @@ import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.mi
 import Signin from './Pages/Signin'
 import Dashboard from './Pages/Dashboard'
 import Navbar from './Pages/Navbar'
+import Specials from './Pages/Specials'
+import Events from './Pages/Events'
+import Restaurants from './Pages/Restaurants'
+import Chefs from './Pages/Chefs'
+import Contact from './Pages/Contact'
+import Continental from './Pages/Continental'
+import Snacks from './Pages/Snacks'
+import Deserts from './Pages/Deserts'
+import Drinks from './Pages/Drinks'
+import Others from './Pages/Others'
+import Traditional from './Pages/Traditional'
+import Cart from './Pages/Cart'
+import Profile from './Pages/Profile'
+import PayStack from './Pages/PayStack'
 function App() {
   return (
     <>
@@ -22,6 +36,20 @@ function App() {
      <Route path="/signup" element={<Signup/>}/>
      <Route path="/signin" element={<Signin/>}/>
      <Route path="/dashboard" element={<Dashboard/>}/>
+     <Route path="/specials" element={<Specials/>}/>
+     <Route path="/events" element={<Events/>}/>
+     <Route path="/restaurants" element={<Restaurants/>}/>
+     <Route path="/chefs" element={<Chefs/>}/>
+     <Route path="/cart" element={<Cart/>}/>
+     <Route path="/profile" element={<Profile/>}/>
+     <Route path="/contact" element={<Contact/>}/>
+     <Route path="/menu/continental" element={<Continental/>}/>
+     <Route path="/menu/traditional" element={<Traditional/>}/>
+     <Route path="/menu/snacks" element={<Snacks/>}/>
+     <Route path="/menu/deserts" element={<Deserts/>}/>
+     <Route path="/menu/drinks" element={<Drinks/>}/>
+     <Route path="/menu/others" element={<Others/>}/>
+     <Route path="/pay" element={<PayStack/>}/>
      {/* <Route path="/naver" element={<Navbar/>}/> */}
     </Routes>
     </>
